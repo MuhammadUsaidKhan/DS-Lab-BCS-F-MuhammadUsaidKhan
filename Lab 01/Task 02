@@ -1,0 +1,74 @@
+#include <iostream>
+#include <cstring>
+using namespace std;
+
+class Exam {
+private:
+    char* studentName;
+    char* examDate;
+    float score;
+
+public:
+    Exam(const char* name, const char* date, float sc) {
+        studentName = new char[strlen(name) + 1];
+        strcpy(studentName, name);
+
+        examDate = new char[strlen(date) + 1];
+        strcpy(examDate, date);
+
+        score = sc;
+    }
+
+    ~Exam() {
+        delete[] studentName;
+        delete[] examDate;
+    }
+
+    void display() const {
+        cout << "Student Name: " << studentName << "\n";
+        cout << "Exam Date: " << examDate << "\n";
+        cout << "Score: " << score << "\n";
+    }
+
+    void setStudentName(const char* name) {
+        delete[] studentName;
+        studentName = new char[strlen(name) + 1];
+        strcpy(studentName, name);
+    }
+
+    void setExamDate(const char* date) {
+        delete[] examDate;
+        examDate = new char[strlen(date) + 1];
+        strcpy(examDate, date);
+    }
+
+    void setScore(float sc) {
+        score = sc;
+    }
+};
+
+int main() {
+    
+    Exam exam1("John Doe", "2025-08-25", 95.5);
+
+    cout << "Original Exam Record:\n";
+    exam1.display();
+
+    // Shallow copy
+    Exam exam2 = exam1;  
+    
+    cout << "\nShallow Copy Exam Record:\n";
+    exam2.display();
+
+    exam2.setStudentName("Jane Smith");
+    exam2.setExamDate("2025-09-01");
+    exam2.setScore(88.0);
+
+    cout << "\nUpdated Shallow Copy Exam Record:\n";
+    exam2.display();
+
+    cout << "\nOriginal Exam Record after shallow copy update:\n";
+    exam1.display();
+
+    return 0;
+}
