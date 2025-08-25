@@ -1,0 +1,31 @@
+#include <iostream>
+using namespace std;
+class Exam{
+    private:
+        string studentName;
+        string examDate;
+        float score;
+    public:
+        void setStudentName(string name){
+            studentName = name;
+        }
+        void setExamDate(string ed){
+            examDate = ed;
+        }
+        void setScore(float s){
+            score = s;
+        }
+        string getStudentName(){
+            return studentName;
+        }
+        string getExamDate(){
+            return examDate;
+        }
+        float getScore(){
+            return score;
+        }
+};
+int main()
+{
+    return 0;
+}
