@@ -1,0 +1,47 @@
+#include <iostream>
+using namespace std;
+
+class Box {
+private:
+    int* value;  
+public:
+    Box(int val) {
+        value = new int(val);  
+        cout << "Constructor called, value = " << *value << endl;
+    }
+    ~Box() {
+        delete value;
+        cout << "Destructor called, memory freed." << endl;
+    }
+
+    Box(const Box& other) {
+        value = new int(*other.value);  
+        cout << "Copy Constructor called, value = " << *value << endl;
+    }
+
+    Box& operator=(const Box& other) {
+        if (this == &other) {
+            return *this;  
+        }
+        delete value;  
+        value = new int(*other.value); 
+        cout << "Copy Assignment Operator called, value = " << *value << endl;
+        return *this;
+    }
+    void display() const {
+        cout << "Box value = " << *value << endl;
+    }
+};
+int main() {
+    cout << "Test Case 1: Constructor and Display" << endl;
+    Box box1(10);  
+    box1.display(); 
+    cout << "\nTest Case 2: Copy Constructor (Deep Copy)" << endl;
+    Box box2 = box1;  
+    box2.display();   
+    cout << "\nTest Case 3: Copy Assignment Operator (Deep Copy)" << endl;
+    Box box3(20);     
+    box3 = box1;       
+    box3.display();    
+    return 0;
+}
