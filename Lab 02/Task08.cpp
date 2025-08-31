@@ -43,5 +43,9 @@ int main()
     }
     cout<<"Hottest Day is Day "<<hottest<<endl;
     cout<<"Coldest Day is Day "<<coldest<<endl;
+    for(int i=0; i<days; i++){
+        delete [] city[i];
+    }
+    delete [] city;
     return 0;
 }
