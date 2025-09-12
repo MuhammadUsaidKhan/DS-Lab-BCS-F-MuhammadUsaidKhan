@@ -26,5 +26,6 @@ int main() {
     if(found == false){
         cout<<"The Target value is not present in the array."<<endl;
     }
+    delete [] array;
     return 0;
 }
