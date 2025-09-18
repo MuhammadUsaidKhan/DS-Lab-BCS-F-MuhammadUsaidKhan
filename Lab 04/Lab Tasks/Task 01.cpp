@@ -1,0 +1,31 @@
+#include <iostream>
+#include <string>
+using namespace std;
+int main() {
+    int size;
+    cout<<"Entr the size of an Array: ";
+    cin>>size;
+    int *array;
+    array = new int[size];
+    int i;
+    int count =0;
+    for(i=0; i<size; i++){
+        cout<<"Enter value at position "<<i+1<<" :";
+        cin>>array[i];
+    }
+    int targetValue;
+    cout<<"Enter the value you want to search: ";
+    cin>>targetValue;
+    bool found = false;
+    for(i=0; i<size; i++){
+        if(targetValue==array[i]){
+            cout<<"Target Value found at Index: "<<i<<endl;
+            found=true;
+        }
+    }
+    if(found == false){
+        cout<<"The Target value is not present in the array."<<endl;
+    }
+    delete [] array;
+    return 0;
+}
