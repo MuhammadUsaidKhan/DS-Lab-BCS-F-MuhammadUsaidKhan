@@ -12,7 +12,7 @@ void printNumbers(int n){
 }
 int main(){
     int num;
-    cout<<"Enter the number you want the factorial of: ";
+    cout<<"Enter the number: ";
     cin>>num;
     printNumbers(num);
     return 0;
